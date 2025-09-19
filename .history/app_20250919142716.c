@@ -600,13 +600,12 @@ int main() {
                         }
                         
                     } else {
-                        printf("\nIl n'y a aucun joueur buteur!\n");
+                        printf("\nIl n'y a aucun joueur dans la liste!\n");
                     }
 
                 } else if (strcmp(choix_statistiques, "5") == 0) {
 
-                    // Afficher le joueur le plus jeune et le plus age
-                    
+                    break;
 
                 } else if (strcmp(choix_statistiques, "#") == 0) {
 

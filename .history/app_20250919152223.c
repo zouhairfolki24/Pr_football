@@ -606,7 +606,6 @@ int main() {
                 } else if (strcmp(choix_statistiques, "5") == 0) {
 
                     // Afficher le joueur le plus jeune et le plus age
-                    
 
                 } else if (strcmp(choix_statistiques, "#") == 0) {
 

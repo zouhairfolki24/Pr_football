@@ -369,10 +369,11 @@ void afficher_joueurs_marque_xbuts(int size_joueurs) {
 
 int nombre_buts_meilleur_buteur(int size_joueurs) {
 
-    int buts_buteur = equipe[0].buts, buteur_exist = 0;
+    int buts_buteur = equipe[0].buts, buteur_exist = 0, buts_joueur;
     for (int i = 1; i < size_joueurs; i++) {
-        if (equipe[i].buts > buts_buteur && equipe[i].id != 0) {
-            buts_buteur = equipe[i].buts;
+        if (equipe[i].buts > buteur && equipe[i].id != 0) {
+            buts_joueur = equipe[i].buts;
+            pos_buteur = i;
             buteur_exist = 1;
         }
     }
@@ -380,14 +381,14 @@ int nombre_buts_meilleur_buteur(int size_joueurs) {
     if (!buteur_exist) {
         return -1;
     } else {
-        return buts_buteur;
+        return buts_joueur;
     }
 }
 
 int main() {
 
     struct Joueur joueur;
-    int index = 0, pos_joueur, total, buts_buteur;
+    int index = 0, pos_joueur, total, pos_buteur;
     int size_joueurs = sizeof(equipe) / sizeof(equipe[0]);
     char choix[20],
          choix_ajoute[20], 
@@ -590,23 +591,16 @@ int main() {
                 } else if (strcmp(choix_statistiques, "4") == 0) {
 
                     // Afficher le meilleur buteur
-                    buts_buteur = nombre_buts_meilleur_buteur(size_joueurs);
-                    if (buts_buteur != -1) {
-                        
-                        for (int i = 0; i < size_joueurs; i++) {
-                            if (equipe[i].buts == buts_buteur) {
-                                printf("\nID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", equipe[i].id, equipe[i].nom, equipe[i].prenom, equipe[i].numeroMaillot, equipe[i].poste, equipe[i].age, equipe[i].buts);
-                            }
-                        }
-                        
+                    pos_buteur = position_meilleur_buteur(size_joueurs);
+                    if (pos_buteur != -1) {
+                        printf("\nID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", equipe[pos_buteur].id, equipe[pos_buteur].nom, equipe[pos_buteur].prenom, equipe[pos_buteur].numeroMaillot, equipe[pos_buteur].poste, equipe[pos_buteur].age, equipe[pos_buteur].buts);
                     } else {
-                        printf("\nIl n'y a aucun joueur buteur!\n");
+                        printf("\nIl n'y a aucun joueur dans la liste!\n");
                     }
 
                 } else if (strcmp(choix_statistiques, "5") == 0) {
 
-                    // Afficher le joueur le plus jeune et le plus age
-                    
+                    break;
 
                 } else if (strcmp(choix_statistiques, "#") == 0) {
 

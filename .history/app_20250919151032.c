@@ -371,7 +371,7 @@ int nombre_buts_meilleur_buteur(int size_joueurs) {
 
     int buts_buteur = equipe[0].buts, buteur_exist = 0;
     for (int i = 1; i < size_joueurs; i++) {
-        if (equipe[i].buts > buts_buteur && equipe[i].id != 0) {
+        if (equipe[i].buts >= buts_buteur && equipe[i].id != 0) {
             buts_buteur = equipe[i].buts;
             buteur_exist = 1;
         }
@@ -600,13 +600,12 @@ int main() {
                         }
                         
                     } else {
-                        printf("\nIl n'y a aucun joueur buteur!\n");
+                        printf("\nIl n'y a aucun joueur dans la liste!\n");
                     }
 
                 } else if (strcmp(choix_statistiques, "5") == 0) {
 
-                    // Afficher le joueur le plus jeune et le plus age
-                    
+                    break;
 
                 } else if (strcmp(choix_statistiques, "#") == 0) {
 
