@@ -91,7 +91,7 @@ int get_nombre_joueurs(int size_joueurs) {
     }
 }
 
-int ajouter_plusieurs_joueur(int size_joueurs, int index) {
+void ajouter_plusieurs_joueur(int size_joueurs, int index) {
 
     struct Joueur joueur;
     int nombre_joueurs = get_nombre_joueurs(size_joueurs);
@@ -102,8 +102,6 @@ int ajouter_plusieurs_joueur(int size_joueurs, int index) {
         ajouter_joueur(joueur, index);
         index++;
     }
-
-    return index;
 }
 
 void trier_joueurs_par_nom(int size_joueurs) {
@@ -404,7 +402,7 @@ void afficher_plus_jeune_age(int size_joueurs) {
     struct Joueur joueurs[nombre_joueurs];
     int j = 0;
     
-    int plus_jeune, plus_age;
+    int plus_jeune;
 
     if (nombre_joueurs > 1) {
         for (int i = 0; i < size_joueurs; i++) {
@@ -413,9 +411,6 @@ void afficher_plus_jeune_age(int size_joueurs) {
                 j++;
             }
         }
-
-        plus_jeune = joueurs[0].age;
-        plus_age = joueurs[0].age;
     
         for (int i = 1; i < nombre_joueurs; i++) {
             if (joueurs[i].age < plus_jeune) {
@@ -429,27 +424,19 @@ void afficher_plus_jeune_age(int size_joueurs) {
     }
 
     if (nombre_joueurs != 0) {
-        
-        printf("\nLes joueurs plus age: \n");
-        for (int i = 0; i < nombre_joueurs; i++) {
-            if (joueurs[i].age == plus_age) {
-                printf("\n  ID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", joueurs[i].id, joueurs[i].nom, joueurs[i].prenom, joueurs[i].numeroMaillot, joueurs[i].poste, joueurs[i].age, joueurs[i].buts);
-            }
-
-            if (nombre_joueurs == 1) {
-                afficher_joueurs(size_joueurs);
-                return;
-            }
-
-        }
-        
         printf("\nLes joueurs plus jeune: \n");
         for (int i = 0; i < nombre_joueurs; i++) {
             if (joueurs[i].age == plus_jeune) {
                 printf("\n  ID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", joueurs[i].id, joueurs[i].nom, joueurs[i].prenom, joueurs[i].numeroMaillot, joueurs[i].poste, joueurs[i].age, joueurs[i].buts);
             }
         }
-
+        
+        printf("\nLes joueurs plus age: \n");
+        for (int i = 0; i < nombre_joueurs; i++) {
+            if (joueurs[i].age == plus_age) {
+                printf("\n  ID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", joueurs[i].id, joueurs[i].nom, joueurs[i].prenom, joueurs[i].numeroMaillot, joueurs[i].poste, joueurs[i].age, joueurs[i].buts);
+            }
+        }
     } else {
 
         printf("\nIl n'y a aucun joueur dans la liste!\n");
@@ -495,7 +482,8 @@ int main() {
                 } else if (strcmp(choix_ajoute, "2") == 0) {
 
                     // Ajouter plusieurs joueurs (une seule operation)
-                    index = ajouter_plusieurs_joueur(size_joueurs, index);
+                    ajouter_plusieurs_joueur(size_joueurs, index);
+                    index++;
 
                 } else if (strcmp(choix_ajoute, "#") == 0) {
 

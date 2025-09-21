@@ -91,7 +91,7 @@ int get_nombre_joueurs(int size_joueurs) {
     }
 }
 
-int ajouter_plusieurs_joueur(int size_joueurs, int index) {
+void ajouter_plusieurs_joueur(int size_joueurs, int index) {
 
     struct Joueur joueur;
     int nombre_joueurs = get_nombre_joueurs(size_joueurs);
@@ -102,8 +102,6 @@ int ajouter_plusieurs_joueur(int size_joueurs, int index) {
         ajouter_joueur(joueur, index);
         index++;
     }
-
-    return index;
 }
 
 void trier_joueurs_par_nom(int size_joueurs) {
@@ -495,7 +493,8 @@ int main() {
                 } else if (strcmp(choix_ajoute, "2") == 0) {
 
                     // Ajouter plusieurs joueurs (une seule operation)
-                    index = ajouter_plusieurs_joueur(size_joueurs, index);
+                    ajouter_plusieurs_joueur(size_joueurs, index);
+                    index++;
 
                 } else if (strcmp(choix_ajoute, "#") == 0) {
 

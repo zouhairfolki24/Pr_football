@@ -58,18 +58,6 @@ struct Joueur get_infos_joueur() {
     return joueur;
 }
 
-char * get_choix_user() {
-
-    static char choix[20];
-
-    printf("\nEntrez votre choix: ");
-    fgets(choix, sizeof(choix), stdin);
-    choix[strcspn(choix, "\n")] = 0;
-
-    return choix;
-
-}
-
 void ajouter_joueur(struct Joueur joueur, int index) {
     equipe[index] = joueur;
     printf("\nLe joueur a ete ajoute avec succes.\n");
@@ -91,7 +79,7 @@ int get_nombre_joueurs(int size_joueurs) {
     }
 }
 
-int ajouter_plusieurs_joueur(int size_joueurs, int index) {
+void ajouter_plusieurs_joueur(int size_joueurs, int index) {
 
     struct Joueur joueur;
     int nombre_joueurs = get_nombre_joueurs(size_joueurs);
@@ -102,8 +90,6 @@ int ajouter_plusieurs_joueur(int size_joueurs, int index) {
         ajouter_joueur(joueur, index);
         index++;
     }
-
-    return index;
 }
 
 void trier_joueurs_par_nom(int size_joueurs) {
@@ -403,59 +389,45 @@ void afficher_plus_jeune_age(int size_joueurs) {
     int nombre_joueurs = calcule_nombre_total_joueurs(size_joueurs);
     struct Joueur joueurs[nombre_joueurs];
     int j = 0;
-    
-    int plus_jeune, plus_age;
 
-    if (nombre_joueurs > 1) {
+    if (nombre_joueurs != 0) {
         for (int i = 0; i < size_joueurs; i++) {
             if (equipe[i].id != 0) {
                 joueurs[j] = equipe[i];
                 j++;
             }
         }
-
-        plus_jeune = joueurs[0].age;
-        plus_age = joueurs[0].age;
-    
-        for (int i = 1; i < nombre_joueurs; i++) {
-            if (joueurs[i].age < plus_jeune) {
-                plus_jeune = joueurs[i].age;
-            } 
-            if (joueurs[i].age > plus_age) {
-                plus_age = joueurs[i].age;
-            }
-        }
-
     }
 
-    if (nombre_joueurs != 0) {
-        
-        printf("\nLes joueurs plus age: \n");
-        for (int i = 0; i < nombre_joueurs; i++) {
-            if (joueurs[i].age == plus_age) {
-                printf("\n  ID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", joueurs[i].id, joueurs[i].nom, joueurs[i].prenom, joueurs[i].numeroMaillot, joueurs[i].poste, joueurs[i].age, joueurs[i].buts);
-            }
+    int plus_jeune = joueurs[0].age;
+    int plus_age = joueurs[0].age;
 
-            if (nombre_joueurs == 1) {
-                afficher_joueurs(size_joueurs);
-                return;
-            }
-
+    for (int i = 1; i < nombre_joueurs; i++) {
+        if (joueurs[i].age < plus_jeune) {
+            plus_jeune = joueurs[i].age;
+        } 
+        if (joueurs[i].age > plus_age) {
+            plus_age = joueurs[i].age;
         }
-        
+    }
+
+    if () {
         printf("\nLes joueurs plus jeune: \n");
         for (int i = 0; i < nombre_joueurs; i++) {
             if (joueurs[i].age == plus_jeune) {
                 printf("\n  ID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", joueurs[i].id, joueurs[i].nom, joueurs[i].prenom, joueurs[i].numeroMaillot, joueurs[i].poste, joueurs[i].age, joueurs[i].buts);
             }
         }
-
-    } else {
-
-        printf("\nIl n'y a aucun joueur dans la liste!\n");
-
     }
 
+    if () {
+        printf("\nLes joueurs plus age: \n");
+        for (int i = 0; i < nombre_joueurs; i++) {
+            if (joueurs[i].age == plus_age) {
+                printf("\n  ID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", joueurs[i].id, joueurs[i].nom, joueurs[i].prenom, joueurs[i].numeroMaillot, joueurs[i].poste, joueurs[i].age, joueurs[i].buts);
+            }
+        }
+    }
 }
 
 int main() {
@@ -467,6 +439,7 @@ int main() {
          choix_ajoute[20], 
          choix_affiche[20], 
          choix_modification[20], 
+         choix_suppression[20],
          choix_recherche[20],
          choix_statistiques[20];
     float age_moyen;
@@ -475,7 +448,9 @@ int main() {
         
         affiche_menu();
 
-        strcpy(choix, get_choix_user());
+        printf("\nEntrez votre choix: ");
+        fgets(choix, sizeof(choix), stdin);
+        choix[strcspn(choix, "\n")] = 0;
     
         if (strcmp(choix, "1") == 0) {
 
@@ -483,7 +458,9 @@ int main() {
 
                 printf("\n 1. Ajouter un nouveau joueur.\n 2. Ajouter plusieurs joueurs en une seule operation.\n #. Menu principale.\n");
 
-                strcpy(choix_ajoute, get_choix_user());
+                printf("\nEntrez votre choix: ");
+                fgets(choix_ajoute, sizeof(choix_ajoute), stdin);
+                choix_ajoute[strcspn(choix_ajoute, "\n")] = 0;
 
                 if (strcmp(choix_ajoute, "1") == 0) {
                     
@@ -495,7 +472,8 @@ int main() {
                 } else if (strcmp(choix_ajoute, "2") == 0) {
 
                     // Ajouter plusieurs joueurs (une seule operation)
-                    index = ajouter_plusieurs_joueur(size_joueurs, index);
+                    ajouter_plusieurs_joueur(size_joueurs, index);
+                    index++;
 
                 } else if (strcmp(choix_ajoute, "#") == 0) {
 
@@ -515,7 +493,9 @@ int main() {
 
                 printf("\n 1. Trier les joueurs par ordre alphabetique (Nom A->Z).\n 2. Trier les joueurs par age.\n 3. Afficher les joueurs par poste.\n #. Menu principale.\n");
 
-                strcpy(choix_affiche, get_choix_user());
+                printf("\nEntrez votre choix: ");
+                fgets(choix_affiche, sizeof(choix_affiche), stdin);
+                choix_affiche[strcspn(choix_affiche, "\n")] = 0;
 
                 if (strcmp(choix_affiche, "1") == 0) {
                     
@@ -552,7 +532,9 @@ int main() {
 
                 printf("\n 1. Modifier le poste d'un joueur.\n 2. Modifier l'age d'un joueur.\n 3. Modifier le nombre de buts marques par un joueur.\n #. Menu principale.\n");
 
-                strcpy(choix_modification, get_choix_user());
+                printf("\nEntrez votre choix: ");
+                fgets(choix_modification, sizeof(choix_modification), stdin);
+                choix_modification[strcspn(choix_modification, "\n")] = 0;
 
                 if (strcmp(choix_modification, "1") == 0) {
                     
@@ -592,7 +574,9 @@ int main() {
 
                 printf("\n 1. Rchercher un joueur par ID.\n 2. Rechercher un joueur par Nom.\n #. Menu principale.\n");
 
-                strcpy(choix_recherche, get_choix_user());
+                printf("\nEntrez votre choix: ");
+                fgets(choix_recherche, sizeof(choix_recherche), stdin);
+                choix_recherche[strcspn(choix_recherche, "\n")] = 0;
 
                 if (strcmp(choix_recherche, "1") == 0) {
 
@@ -624,7 +608,9 @@ int main() {
 
                 printf("\n 1. Afficher le nombre total de joueurs dans l'equipe.\n 2. Afficher l'age moyen des joueurs.\n 3. Afficher les joueurs ayant marque plus de X buts.\n 4. Afficher le meilleur buteur.\n 5. Afficher le joueur le plus jeune et le plus age.\n #. Menu principale.\n");
 
-                strcpy(choix_statistiques, get_choix_user());
+                printf("\nEntrez votre choix: ");
+                fgets(choix_statistiques, sizeof(choix_statistiques), stdin);
+                choix_statistiques[strcspn(choix_statistiques, "\n")] = 0;
 
                 if (strcmp(choix_statistiques, "1") == 0) {
 
@@ -682,8 +668,7 @@ int main() {
 
         } else if (strcmp(choix, "7") == 0) {
             
-            // Quitter program
-            return 0;
+            break;
 
         } else {
             
