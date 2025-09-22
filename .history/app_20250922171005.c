@@ -370,7 +370,7 @@ void afficher_joueurs_marque_xbuts(int size_joueurs) {
 
     for (int i = 0; i < size_joueurs; i++) {
         if (equipe[i].buts >= x_buts && equipe[i].id != 0) {
-            afficher_un_joueur(i);
+            printf("\nID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", equipe[i].id, equipe[i].nom, equipe[i].prenom, equipe[i].numeroMaillot, equipe[i].poste, equipe[i].age, equipe[i].buts);
             joueur_existe = 1;
         }
     }
@@ -655,7 +655,7 @@ int main() {
                         
                         for (int i = 0; i < size_joueurs; i++) {
                             if (equipe[i].buts == buts_buteur) {
-                                afficher_un_joueur(i);
+                                printf("\nID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", equipe[i].id, equipe[i].nom, equipe[i].prenom, equipe[i].numeroMaillot, equipe[i].poste, equipe[i].age, equipe[i].buts);
                             }
                         }
                         
@@ -692,4 +692,9 @@ int main() {
         }
     
     }
+
+
+
+
+    return 0;
 }

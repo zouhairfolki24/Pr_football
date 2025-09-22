@@ -655,7 +655,7 @@ int main() {
                         
                         for (int i = 0; i < size_joueurs; i++) {
                             if (equipe[i].buts == buts_buteur) {
-                                afficher_un_joueur(i);
+                                afficher_un_joueur(i)
                             }
                         }
                         
@@ -692,4 +692,9 @@ int main() {
         }
     
     }
+
+
+
+
+    return 0;
 }
