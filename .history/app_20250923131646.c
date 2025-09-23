@@ -11,35 +11,7 @@ struct Joueur {
 };
 
 struct Joueur equipe[100];
-int id = 11;
-
-
-void remplissage_donnees_joueurs() {
-
-    struct Joueur joueur1 = {1, "messi", "lionel", 10, "attaquant", 38, 91};
-    struct Joueur joueur2 = {2, "ronaldo", "crestiano", 7, "attaquant", 40, 32};
-    struct Joueur joueur3 = {3, "lamine", "yamal", 19, "attaquant", 18, 12};
-    struct Joueur joueur4 = {4, "palmer", "cole", 24, "milieu", 23, 19};
-    struct Joueur joueur5 = {5, "van dijk", "virgil", 4, "defenseur", 34, 4};
-    struct Joueur joueur6 = {6, "raphinha", "dias", 11, "attaquant", 28, 21};
-    struct Joueur joueur7 = {7, "pedri", "gonzalez", 8, "milieu", 22, 7};
-    struct Joueur joueur8 = {8, "garcia", "joan", 13, "gardien", 24, 0};
-    struct Joueur joueur9 = {9, "dias", "ruben", 3, "defenseur", 28, 1};
-    struct Joueur joueur10 = {10, "diaz", "luis", 14, "attaquant", 28, 16};
-
-    equipe[1] = joueur1;
-    equipe[2] = joueur2;
-    equipe[3] = joueur3;
-    equipe[4] = joueur4;
-    equipe[5] = joueur5;
-    equipe[6] = joueur6;
-    equipe[7] = joueur7;
-    equipe[8] = joueur8;
-    equipe[9] = joueur9;
-    equipe[10] = joueur10;
-
-}
-
+int id = 1;
 
 void affiche_menu() {
     printf("\n 1. Ajouter un joueur.\n 2. Afficher la liste de tous les joueurs.\n 3. Modifier un joueur.\n 4. Supprimer un joueur.\n 5. Rechercher un joueur.\n 6. Statistiques.\n 7. Quitter.\n");
@@ -195,7 +167,7 @@ void afficher_joueurs(int size_joueurs) {
     int joueur_existe = 0;
     for (int i = 0; i < size_joueurs; i++) {
         if (equipe[i].id != 0) {
-            afficher_un_joueur(i);
+            afficher_un_joueur(i)
             joueur_existe = 1;
         }
     }
@@ -216,7 +188,7 @@ void afficher_joueurs_par_poste(int size_joueurs) {
     int poste_existe = 0;
     for (int i = 0; i < size_joueurs; i++) {
         if (strcmp(equipe[i].poste, new_poste) == 0 && equipe[i].id != 0) {
-            afficher_un_joueur(i);
+            printf("\nID: %d, Nom: %s, Prenom: %s, Numero Maillot: %d, Poste: %s, Age: %d, Buts: %d.\n", equipe[i].id, equipe[i].nom, equipe[i].prenom, equipe[i].numeroMaillot, equipe[i].poste, equipe[i].age, equipe[i].buts);
             poste_existe = 1;
         }
     }
@@ -489,16 +461,14 @@ int main() {
     struct Joueur joueur;
     int index = 0, pos_joueur, total, buts_buteur;
     int size_joueurs = sizeof(equipe) / sizeof(equipe[0]);
-    char * choix;
+    char choix[20];
     float age_moyen;
-
-    remplissage_donnees_joueurs();
 
     while (true) {
         
         affiche_menu();
 
-        choix = get_choix_user();
+        strcpy(choix, get_choix_user());
     
         if (strcmp(choix, "1") == 0) {
 
@@ -506,7 +476,7 @@ int main() {
 
                 printf("\n 1. Ajouter un nouveau joueur.\n 2. Ajouter plusieurs joueurs en une seule operation.\n #. Menu principale.\n");
 
-                choix = get_choix_user();
+                strcpy(choix, get_choix_user());
 
                 if (strcmp(choix, "1") == 0) {
                     
@@ -538,7 +508,7 @@ int main() {
 
                 printf("\n 1. Trier les joueurs par ordre alphabetique (Nom A->Z).\n 2. Trier les joueurs par age.\n 3. Afficher les joueurs par poste.\n #. Menu principale.\n");
 
-                choix = get_choix_user();
+                strcpy(choix, get_choix_user());
 
                 if (strcmp(choix, "1") == 0) {
                     
@@ -575,7 +545,7 @@ int main() {
 
                 printf("\n 1. Modifier le poste d'un joueur.\n 2. Modifier l'age d'un joueur.\n 3. Modifier le nombre de buts marques par un joueur.\n #. Menu principale.\n");
 
-                choix = get_choix_user();
+                strcpy(choix, get_choix_user());
 
                 if (strcmp(choix, "1") == 0) {
                     
@@ -615,7 +585,7 @@ int main() {
 
                 printf("\n 1. Rchercher un joueur par ID.\n 2. Rechercher un joueur par Nom.\n #. Menu principale.\n");
 
-                choix = get_choix_user();
+                strcpy(choix, get_choix_user());
 
                 if (strcmp(choix, "1") == 0) {
 
@@ -647,7 +617,7 @@ int main() {
 
                 printf("\n 1. Afficher le nombre total de joueurs dans l'equipe.\n 2. Afficher l'age moyen des joueurs.\n 3. Afficher les joueurs ayant marque plus de X buts.\n 4. Afficher le meilleur buteur.\n 5. Afficher le joueur le plus jeune et le plus age.\n #. Menu principale.\n");
 
-                choix = get_choix_user();
+                strcpy(choix, get_choix_user());
 
                 if (strcmp(choix, "1") == 0) {
 

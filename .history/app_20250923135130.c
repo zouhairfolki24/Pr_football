@@ -11,32 +11,14 @@ struct Joueur {
 };
 
 struct Joueur equipe[100];
-int id = 11;
+int id = 1;
 
 
 void remplissage_donnees_joueurs() {
 
-    struct Joueur joueur1 = {1, "messi", "lionel", 10, "attaquant", 38, 91};
-    struct Joueur joueur2 = {2, "ronaldo", "crestiano", 7, "attaquant", 40, 32};
-    struct Joueur joueur3 = {3, "lamine", "yamal", 19, "attaquant", 18, 12};
-    struct Joueur joueur4 = {4, "palmer", "cole", 24, "milieu", 23, 19};
-    struct Joueur joueur5 = {5, "van dijk", "virgil", 4, "defenseur", 34, 4};
-    struct Joueur joueur6 = {6, "raphinha", "dias", 11, "attaquant", 28, 21};
-    struct Joueur joueur7 = {7, "pedri", "gonzalez", 8, "milieu", 22, 7};
-    struct Joueur joueur8 = {8, "garcia", "joan", 13, "gardien", 24, 0};
-    struct Joueur joueur9 = {9, "dias", "ruben", 3, "defenseur", 28, 1};
-    struct Joueur joueur10 = {10, "diaz", "luis", 14, "attaquant", 28, 16};
+    struct Joueur joueur;
+    joueur = 
 
-    equipe[1] = joueur1;
-    equipe[2] = joueur2;
-    equipe[3] = joueur3;
-    equipe[4] = joueur4;
-    equipe[5] = joueur5;
-    equipe[6] = joueur6;
-    equipe[7] = joueur7;
-    equipe[8] = joueur8;
-    equipe[9] = joueur9;
-    equipe[10] = joueur10;
 
 }
 
@@ -491,8 +473,6 @@ int main() {
     int size_joueurs = sizeof(equipe) / sizeof(equipe[0]);
     char * choix;
     float age_moyen;
-
-    remplissage_donnees_joueurs();
 
     while (true) {
         

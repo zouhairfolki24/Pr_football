@@ -11,7 +11,7 @@ struct Joueur {
 };
 
 struct Joueur equipe[100];
-int id = 11;
+int id = 1;
 
 
 void remplissage_donnees_joueurs() {

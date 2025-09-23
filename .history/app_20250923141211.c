@@ -11,21 +11,21 @@ struct Joueur {
 };
 
 struct Joueur equipe[100];
-int id = 11;
+int id = 1;
 
 
 void remplissage_donnees_joueurs() {
 
     struct Joueur joueur1 = {1, "messi", "lionel", 10, "attaquant", 38, 91};
     struct Joueur joueur2 = {2, "ronaldo", "crestiano", 7, "attaquant", 40, 32};
-    struct Joueur joueur3 = {3, "lamine", "yamal", 19, "attaquant", 18, 12};
-    struct Joueur joueur4 = {4, "palmer", "cole", 24, "milieu", 23, 19};
-    struct Joueur joueur5 = {5, "van dijk", "virgil", 4, "defenseur", 34, 4};
-    struct Joueur joueur6 = {6, "raphinha", "dias", 11, "attaquant", 28, 21};
-    struct Joueur joueur7 = {7, "pedri", "gonzalez", 8, "milieu", 22, 7};
-    struct Joueur joueur8 = {8, "garcia", "joan", 13, "gardien", 24, 0};
-    struct Joueur joueur9 = {9, "dias", "ruben", 3, "defenseur", 28, 1};
-    struct Joueur joueur10 = {10, "diaz", "luis", 14, "attaquant", 28, 16};
+    struct Joueur joueur3 = {3, "lamine", "yamal", "attaquant", 18, 12};
+    struct Joueur joueur4 = {4, "palmer", "cole", "milieu", 24, 23, 19};
+    struct Joueur joueur5 = {5, "van dijk", "virgil", "defenseur", 4, 34, 4};
+    struct Joueur joueur6 = {6, "raphinha", "dias", "attaquant", 11, 28, 21};
+    struct Joueur joueur7 = {7, "pedri", "gonzalez", "milieu", 8, 22, 7};
+    struct Joueur joueur8 = {8, "garcia", "joan", "gardien", 13, 24, 0};
+    struct Joueur joueur9 = {9, "dias", "ruben", "defenseur", 3, 28, 1};
+    struct Joueur joueur10 = {10, "diaz", "luis", "attaquant", 14, 28, 16};
 
     equipe[1] = joueur1;
     equipe[2] = joueur2;

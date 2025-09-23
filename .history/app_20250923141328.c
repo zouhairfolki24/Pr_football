@@ -11,7 +11,7 @@ struct Joueur {
 };
 
 struct Joueur equipe[100];
-int id = 11;
+int id = 1;
 
 
 void remplissage_donnees_joueurs() {
@@ -20,8 +20,8 @@ void remplissage_donnees_joueurs() {
     struct Joueur joueur2 = {2, "ronaldo", "crestiano", 7, "attaquant", 40, 32};
     struct Joueur joueur3 = {3, "lamine", "yamal", 19, "attaquant", 18, 12};
     struct Joueur joueur4 = {4, "palmer", "cole", 24, "milieu", 23, 19};
-    struct Joueur joueur5 = {5, "van dijk", "virgil", 4, "defenseur", 34, 4};
-    struct Joueur joueur6 = {6, "raphinha", "dias", 11, "attaquant", 28, 21};
+    struct Joueur joueur5 = {5, "van dijk", "virgil", 4, "defenseur",  34, 4};
+    struct Joueur joueur6 = {6, "raphinha", "dias", 11,"attaquant", 28, 21};
     struct Joueur joueur7 = {7, "pedri", "gonzalez", 8, "milieu", 22, 7};
     struct Joueur joueur8 = {8, "garcia", "joan", 13, "gardien", 24, 0};
     struct Joueur joueur9 = {9, "dias", "ruben", 3, "defenseur", 28, 1};
